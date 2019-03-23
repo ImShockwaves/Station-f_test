@@ -45,10 +45,41 @@ h1 p {
     font-size: 24px;
 }
 
-.vert_mid > h1{
+.vert_mid > h1 {
     font-size: 7vw;
 }
 
-.vert_mid > p{
+.vert_mid > p {
     font-size: 3.2vw;
+}
+
+hr { 
+    display: block;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-style: solid;
+}
+
+section {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.choices {
+    display: flex;
+}
+
+.choices > div {
+    margin-left : 1%;
+    margin-right : 1%;
+}
+
+option {
+    display: none;
+}
+
+.dropdown {
+    clear: both;
+    display: block;
+    height: 100%;
 }
