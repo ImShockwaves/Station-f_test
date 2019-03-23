@@ -2,19 +2,53 @@ body {
     margin: 0px;
 }
 
-.logo {
-    width: auto;
-    height: auto;
+.head-div {
+    height: 60px;
+    width: 140px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.head-div {
-    height: 100%;
-    width: 140px;
-    background-color: black;
+.logo {
+    width: 62%;
+    height: 55%;
 }
 
 .header {
     width: auto;
     display: block;
     height: 60px;
+}
+
+.img_body {
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    color: white;
+    line-height: 400px;
+    background-image:url(../../ressources/section_img.jpg);
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+h1 p {
+    font-family: "FabrikatBold", sans-serif;
+}
+
+.vert_mid{
+    vertical-align:middle;
+    display:inline-block;
+    line-height:1.2;
+    text-shadow: 0px 1px 4px black;
+    font-size: 24px;
+}
+
+.vert_mid > h1{
+    font-size: 7vw;
+}
+
+.vert_mid > p{
+    font-size: 3.2vw;
 }

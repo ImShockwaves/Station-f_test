@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="./style/index.css">
-        <title>Reservation</title>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
-        <script src="./Vuejs/index.js" defer></script> -->
-    </head>
-    <body>
-        <header class="header">
-            <div class="head-div">
-               <img src="../ressources/station-f.png" alt="logo" class="logo">
-             </div>
-        </header>
-    </body>
+	<head>
+		<title>Reservation</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="./style/index.css">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+		<script src="Vuejs/index.js" defer></script>
+	</head>
+	<body>
+		<header class="header" id="app">
+			<a href="https://stationf.co/fr/"><div class="head-div" @mouseover="active = true" @mouseleave="active = false" v-bind:style="logoGetColor">
+			   <img src="../ressources/station-f.png" alt="logo" class="logo">
+			 </div></a>
+		</header>
+		
+		<div class="img_body">
+			<div class="vert_mid">
+					<h1>Réserver une salle de réunion</h1>
+					<p>Vous pouvez réserver une salle de réunion sur cette page</p>
+			</div>    
+		</div>
+		<section>
+			<div>
+
+			</div>
+		</section>
+	</body>
 </html>

@@ -5,18 +5,11 @@ const logo = new Vue({
         active: false
     },
 
-    methods:
-    {
-        MouseOnLogo: function ()
-        {
-            this.active = !this.active;
-        },
-    },
     computed: 
     {
-        LogoGetColor: function ()
+        logoGetColor: function ()
         {
-            if (active)
+            if (this.active)
                 return {'background-color': '#fc1cad'}
             else
                 return {'background-color': 'black'}
