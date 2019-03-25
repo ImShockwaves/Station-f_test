@@ -14,29 +14,29 @@
 		<header class="header">
 			<a href="https://stationf.co/fr/"><div class="head-div" @mouseover="active = true" @mouseleave="active = false" v-bind:style="logoGetColor">
 			   <img src="../ressources/station-f.png" alt="logo" class="logo">
-			 </div></a>
+			</div></a>
 		</header>
 		<div style="background-color: #f9f9f9">
 			<div class="img_body">
 				<div class="vert_mid">
-						<h1>Réserver une salle de réunion</h1>
-						<p>Vous pouvez réserver une salle de réunion sur cette page</p>
+					<h1>Réserver une salle de réunion</h1>
+					<p>Vous pouvez réserver une salle de réunion sur cette page</p>
 				</div>    
 			</div>
 			<section>
 				<hr>
 				<div class="choices">
 					<div class="input-group mb-3">
-							<div class="input-group-prepend">
-									<span class="input-group-text" id="inputGroup-sizing-default">Date:</span>
-								  </div>
-						<input class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="date" id="start" name="start-date">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="inputGroup-sizing-default">Date:</span>
+						</div>
+						<input class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="date" id="start" name="start-date" v-model="date">
 					</div>
 					<div class="input-group mb-3">
-							<div class="input-group-prepend">
-									<span class="input-group-text" id="inputGroup-sizing-default">Capacity:</span>
-								  </div>
-						<input class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="number" id="capacity" name="room-capacity" min="1">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="inputGroup-sizing-default">Capacity:</span>
+						</div>
+						<input class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="number" id="capacity" name="room-capacity" min="0" v-model="capacityRequire">
 					</div>
 					<div class="dropdown">
 						<button @click="dropdown = !dropdown" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,12 +44,12 @@
 						</button>
 						<div v-bind:style="setHideOrReaveal">
 							<div>
-								<input type="checkbox" value="tv">
-								<label for="tv">Tv</label>
+								<input type="checkbox" value="Tv" v-model="stuffRequire">
+								<label for="Tv">Tv</label>
 							</div>
 							<div>
-								<input type="checkbox" value="rp">
-								<label for="rp">Rétroprojecteur</label>
+								<input type="checkbox" value="retro projecteur" v-model="stuffRequire">
+								<label for="retro projecteur">Rétroprojecteur</label>
 							</div>
 						</div>
 					</div>	
@@ -57,8 +57,8 @@
 				<hr>
 			</section>
 			<section>
-				<div v-for="room in rooms" class="room">
-					<div style="display: inline-block; vertical-align: middle; width: 33%; padding-top: 0.5%">
+				<div v-for="room in rooms" v-if="checkRoom(room.equipements, room.capacity)" @click="selectedRoom = room.name" v-bind:style="selected(room.name)" class="room">
+					<div class="room_name">
 						<h3 style="margin-bottom: 0%;">{{ room.name }}</h3>
 					</div>
 					<div class="users">
@@ -75,6 +75,9 @@
 					</div>
 				</div>
 			</section>
+			<div class="submit">
+				<button class="btn btn-primary" v-bind:style="{'background-color': submitButtonColor}" type="submit" v-bind:disabled="!formIsValid">Réserver</button>
+			</div>
 		</div>
 	</div>
 	</body>
