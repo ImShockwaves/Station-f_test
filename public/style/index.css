@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    font-family: "FabrikatBold", sans-serif;
 }
 
 .head-div {
@@ -33,10 +34,6 @@ body {
     background-repeat: no-repeat;
 }
 
-h1 p {
-    font-family: "FabrikatBold", sans-serif;
-}
-
 .vert_mid{
     vertical-align:middle;
     display:inline-block;
@@ -67,19 +64,57 @@ section {
 
 .choices {
     display: flex;
+    width: 85%;
+    margin: 0 auto;
 }
 
 .choices > div {
-    margin-left : 1%;
-    margin-right : 1%;
-}
-
-option {
-    display: none;
+    margin-left : 3%;
+    margin-right : 3%;
 }
 
 .dropdown {
     clear: both;
-    display: block;
     height: 100%;
+}
+
+.room {
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: black;
+    margin-top: 1%;
+    padding: 2%;
+    background-color: white;
+    display: inline-block;
+}
+
+.room > h3 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.users {
+    width: 33%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 0.75%
+}
+
+.stuff {
+    float: right;
+}
+
+.users > img {
+    width: 3vw;
+    height: auto;
+    margin-bottom: 0%
+}
+
+.rt {
+    width: 4vw;
+    height: 4vw;
+    padding-right: 15%;
 }
