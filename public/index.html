@@ -57,7 +57,7 @@
 				<hr>
 			</section>
 			<section>
-				<div v-for="room in rooms" v-if="checkRoom(room.equipements, room.capacity)" @click="selectedRoom = room.name" v-bind:style="selected(room.name)" class="room">
+				<div v-for="room in rooms" v-if="checkRoom(room.equipements, room.capacity)" @click="setSelect(room)" v-bind:style="selected(room.name)" class="room">
 					<div class="room_name">
 						<h3 style="margin-bottom: 0%;">{{ room.name }}</h3>
 					</div>

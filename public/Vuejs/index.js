@@ -49,7 +49,7 @@ const logo = new Vue({
             return ret;
         },
         selectedRoom: null,
-        date: null,
+        date: null
     },
 
     computed: 
@@ -85,7 +85,10 @@ const logo = new Vue({
         },
         formIsValid: function()
         {
-            return this.selectedRoom && this.date;
+            if (this.selectedRoom && this.date == this.selectedRoom.date && this.selectedRoom.name && this.checkRoom(this.selectedRoom.equipements, this.selectedRoom.capacity))
+                return true;
+            else
+                return false;
         },
         submitButtonColor: function()
         {
@@ -99,10 +102,19 @@ const logo = new Vue({
     methods:
     {
         selected: function (roomName) {
-            if (roomName == this.selectedRoom)
+            if (this.selectedRoom && this.date && roomName == this.selectedRoom.name && this.date == this.selectedRoom.date && this.checkRoom(this.selectedRoom.equipements, this.selectedRoom.capacity))
                 return {
                     'border-width': '4px',
                     'border-color': '#4c7ef3'}
+        },
+        setSelect: function (room)
+        {
+            if (this.date)
+            {
+                this.selectedRoom = room;
+                this.selectedRoom.date = this.date;
+            }
+            console.log(this.selectedRoom);
         }
     }
 });
