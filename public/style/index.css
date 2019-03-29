@@ -126,3 +126,61 @@ section {
     margin-right: 2%;
     margin-top: 1%;
 }
+
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.2s ease-out;
+} 
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+.align-description {
+    clear: both;
+    float: left;
+}
+
+.description > h5 {
+  font-size: 2.5vw;  
+}
+
+.description > p {
+    font-size: 2vw;  
+}
+
+.confirmation {
+    text-align: center;
+}
+
+.confirmation > button {
+    font-size: 2vw;
+    border-radius: 8px;     
+}
+
+#yes {
+    background-color: #167FFB;
+    border-color: #167FFB;
+    color: white;
+}
+#yes:hover {
+    background-color: #2760bc;
+}
+
+#no {
+    background-color: #D93749;
+    border-color: #D93749;
+    color: white;
+}
+#no:hover {
+    background-color: #b21e2e;
+}

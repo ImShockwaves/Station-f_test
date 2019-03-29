@@ -5,13 +5,13 @@
 		<title>Reservation</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="style/index.css">
-		<script type="module" src="script/req.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src="script/index.js" defer></script>
 	</head>
 	<body>
 	<div id="app">
+	<div v-bind:style="[confirmRoom ? { 'filter': 'blur(8px)' } : { 'filter': 'blur(0px)' }]">
 		<header class="header">
 			<a href="https://stationf.co/fr/"><div class="head-div" @mouseover="active = true" @mouseleave="active = false" v-bind:style="logoGetColor">
 			   <img src="ressources/station-f.png" alt="logo" class="logo">
@@ -58,7 +58,8 @@
 				<hr>
 			</section>
 			<section>
-				<div v-for="room in rooms" v-if="checkRoom(room.equipements, room.capacity)" @click="setSelect(room)" v-bind:style="selected(room.name)" class="room">
+				<transition-group name="slide-fade" tag="div">
+				<div v-for="room in rooms" v-if="checkRoom(room.equipements, room.capacity)" v-bind:key="room.id" @click="setSelect(room)" v-bind:style="selected(room.name)" class="room">
 					<div class="room_name">
 						<h3 style="margin-bottom: 0%;">{{ room.name }}</h3>
 					</div>
@@ -75,11 +76,29 @@
 						<img src="ressources/tv.svg" class="rt">
 					</div>
 				</div>
+			</transition-group>
 			</section>
 			<div class="submit">
-				<button class="btn btn-primary" v-bind:style="{'background-color': submitButtonColor}" type="submit" v-bind:disabled="!formIsValid">Réserver</button>
+				<button class="btn btn-primary" v-bind:style="{'background-color': submitButtonColor}" type="submit" v-bind:disabled="!formIsValid" @click="confirmRoom = !confirmRoom">Réserver</button>
+			</div>
+		</div>	
+		</div>
+		<transition name="fade">
+		<div v-if="confirmRoom" v-bind:style="submitted">
+			<h4 style="text-align: center; font-size: 4vw">{{ selectedRoom.name }}</h4>
+			<div class="description">
+				<h5 class="align-description">capacity:&nbsp</h5><p>{{ selectedRoom.capacity }}</p>
+				<h5 class="align-description">equipements:</h5><p v-for="stuff in selectedRoom.equipements" style="float: left">&nbsp{{ stuff.name }}</p>
+				<div style="clear: both"><h5 style="float: left; font-size: 2.5vw">description:&nbsp</h5><p style="font-size: 2vw">{{ selectedRoom.description }}</p></div>
+				<h5 class="align-description">date:&nbsp</h5><p>{{ selectedRoom.date }}</p>
+			</div>
+			<div class="confirmation">
+				<p style="font-size: 2.5vw; ">Confirmer la réservation ?</p>
+				<button id="yes" @click="confirmRoom = !confirmRoom">confirmer</button>
+				<button id="no" @click="confirmRoom = !confirmRoom">refuser</button>
 			</div>
 		</div>
+		</transition>
 	</div>
 	</body>
 </html>
