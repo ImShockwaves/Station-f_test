@@ -9,6 +9,7 @@ const logo = new Vue({
         capacityRequire: 0,
         confirmRoom: false,
         selectedRoom: null,
+        confirmation: false,
         date: null
         
     },
@@ -17,7 +18,7 @@ const logo = new Vue({
     {
         logoGetColor: function ()
         {
-            if (this.active)
+            if (this.active && !this.confirmRoom)
                 return {'background-color': '#fc1cad'}
             else
                 return {'background-color': 'black'}
@@ -46,7 +47,7 @@ const logo = new Vue({
         },
         formIsValid: function()
         {
-            if (this.selectedRoom && this.date == this.selectedRoom.date && this.selectedRoom.name && this.checkRoom(this.selectedRoom.equipements, this.selectedRoom.capacity))
+            if (!this.confirmRoom && this.selectedRoom && this.date == this.selectedRoom.date && this.selectedRoom.name && this.checkRoom(this.selectedRoom.equipements, this.selectedRoom.capacity))
                 return true;
             else
                 return false;
@@ -60,7 +61,7 @@ const logo = new Vue({
         },   
         submitted: function ()
         {
-            if (this.confirmRoom)
+            if (this.confirmRoom && !this.confirmation)
             {
                 return {
                     'position': 'absolute',
@@ -120,18 +121,40 @@ const logo = new Vue({
         },
         setSelect: function (room)
         {
-            if (this.date)
+            if (this.date && !this.confirmRoom)
             {
                 this.selectedRoom = room;
                 this.selectedRoom.date = this.date;
             }
+        },
+        setConfirmation: function ()
+        {
+            this.confirmation = false;
+        },
+        triggerConfirmation: function()
+        {
+            this.confirmation = true;
+            this.confirmRoom = false;
+            var data = {
+                name: this.selectedRoom.name,
+                date: this.selectedRoom.date };
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                url: 'http://localhost:8333/endpoint',						
+                success: function(data) {
+                    console.log('data successfully send');
+                }
+            });
+            setTimeout(this.setConfirmation, 3000);
         }
     },
     mounted: function ()
     {
         var self = this;
         $.ajax({
-            url: '../ressources/rooms.json',
+            url: '../api/rooms.json',
             method: 'GET',
             success: function (data) {
                 self.rooms = data.rooms;

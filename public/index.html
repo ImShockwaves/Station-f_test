@@ -11,9 +11,9 @@
 	</head>
 	<body>
 	<div id="app">
-	<div v-bind:style="[confirmRoom ? { 'filter': 'blur(8px)' } : { 'filter': 'blur(0px)' }]">
+	<div v-bind:style="[confirmRoom && !confirmation ? { 'filter': 'blur(8px)' } : { 'filter': 'blur(0px)' }]">
 		<header class="header">
-			<a href="https://stationf.co/fr/"><div class="head-div" @mouseover="active = true" @mouseleave="active = false" v-bind:style="logoGetColor">
+			<a v-bind:disabled="confirmRoom" href="https://stationf.co/fr/"><div class="head-div" @mouseover="active = true" @mouseleave="active = false" v-bind:style="logoGetColor">
 			   <img src="ressources/station-f.png" alt="logo" class="logo">
 			</div></a>
 		</header>
@@ -31,16 +31,16 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="inputGroup-sizing-default">Date:</span>
 						</div>
-						<input class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="date" id="start" name="start-date" v-model="date">
+						<input v-bind:disabled="confirmRoom" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="date" id="start" name="start-date" v-model="date">
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="inputGroup-sizing-default">Capacity:</span>
 						</div>
-						<input class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="number" id="capacity" name="room-capacity" min="0" v-model="capacityRequire">
+						<input v-bind:disabled="confirmRoom" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" type="number" id="capacity" name="room-capacity" min="0" v-model="capacityRequire">
 					</div>
 					<div class="dropdown">
-						<button @click="dropdown = !dropdown" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<button v-bind:disabled="confirmRoom" @click="dropdown = !dropdown" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Équipements
 						</button>
 						<div v-bind:style="setHideOrReaveal">
@@ -87,16 +87,21 @@
 		<div v-if="confirmRoom" v-bind:style="submitted">
 			<h4 style="text-align: center; font-size: 4vw">{{ selectedRoom.name }}</h4>
 			<div class="description">
-				<h5 class="align-description">capacity:&nbsp</h5><p>{{ selectedRoom.capacity }}</p>
-				<h5 class="align-description">equipements:</h5><p v-for="stuff in selectedRoom.equipements" style="float: left">&nbsp{{ stuff.name }}</p>
-				<div style="clear: both"><h5 style="float: left; font-size: 2.5vw">description:&nbsp</h5><p style="font-size: 2vw">{{ selectedRoom.description }}</p></div>
-				<h5 class="align-description">date:&nbsp</h5><p>{{ selectedRoom.date }}</p>
+				<h5 class="align-description">Capacity:&nbsp</h5><p>{{ selectedRoom.capacity }}</p>
+				<h5 class="align-description">Équipements:</h5><p v-for="stuff in selectedRoom.equipements" style="float: left">&nbsp{{ stuff.name }}</p>
+				<div style="clear: both"><h5 style="float: left; font-size: 2.5vw">Description:&nbsp</h5><p style="font-size: 2vw">{{ selectedRoom.description }}</p></div>
+				<h5 class="align-description">Date:&nbsp</h5><p>{{ selectedRoom.date }}</p>
 			</div>
 			<div class="confirmation">
 				<p style="font-size: 2.5vw; ">Confirmer la réservation ?</p>
-				<button id="yes" @click="confirmRoom = !confirmRoom">confirmer</button>
+				<button id="yes" @click="triggerConfirmation">confirmer</button>
 				<button id="no" @click="confirmRoom = !confirmRoom">refuser</button>
 			</div>
+		</div>
+		</transition>
+		<transition name="fade">
+		<div class="reservation-done" v-if="confirmation">
+			<p>Salle réservé avec succès !</p>
 		</div>
 		</transition>
 	</div>
