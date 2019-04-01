@@ -5,6 +5,7 @@
 		<title>Reservation</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="style/index.css">
+		<link rel="shortcut icon" href="#"/>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src="script/index.js" defer></script>
@@ -59,7 +60,7 @@
 			</section>
 			<section>
 				<transition-group name="slide-fade" tag="div">
-				<div v-for="room in rooms" v-if="checkRoom(room.equipements, room.capacity)" v-bind:key="room.id" @click="setSelect(room)" v-bind:style="selected(room.name)" class="room">
+				<div v-for="room in rooms" v-if="checkRoom(room.equipements, room.capacity, room.name)" v-bind:key="room.id" @click="setSelect(room)" v-bind:style="selected(room.name)" class="room">
 					<div class="room_name">
 						<h3 style="margin-bottom: 0%;">{{ room.name }}</h3>
 					</div>

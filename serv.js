@@ -21,9 +21,9 @@ app.post('/endpoint', function(req, res){
     {
       var obj = JSON.parse(data);
       console.log(obj);
-      obj.push({'name': req.body.name, 'date': req.body.date});
+      obj.reservation.push({'name': req.body.name, 'date': req.body.date});
       json = JSON.stringify(obj);
-      fs.writeFile('public/api/reservation.json', json, 'utf8', callback);
+      fs.writeFile('public/api/reservation.json', json, 'utf8', (err) => { console.log(err); });
     }
   });
   console.log('body: ' + req.body.name);
