@@ -20,13 +20,11 @@ app.post('/endpoint', function(req, res){
     else
     {
       var obj = JSON.parse(data);
-      console.log(obj);
       obj.reservation.push({'name': req.body.name, 'date': req.body.date});
       json = JSON.stringify(obj);
       fs.writeFile('public/api/reservation.json', json, 'utf8', (err) => { console.log(err); });
     }
   });
-  console.log('body: ' + req.body.name);
   res.send(req.body);
 });
 
