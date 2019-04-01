@@ -145,6 +145,13 @@ section {
     opacity: 0;
 }
 
+.fading-enter-active, .fading-leave-active {
+    transition: opacity 0.2s ease-out;
+} 
+.fading-enter, .fading-leave-to {
+    opacity: 0;
+}
+
 .align-description {
     clear: both;
     float: left;

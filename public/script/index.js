@@ -153,9 +153,8 @@ const logo = new Vue({
 				}
 			});
 			this.reservation.push(data);
-			for (var i = 0; i < this.reservation.length; i++)
-				console.log(this.reservation[i]);
-			setTimeout(this.setConfirmation, 3000);
+			this.selectedRoom = null;
+			setTimeout(this.setConfirmation, 1000);
 		}
 	},
 	mounted: function ()
