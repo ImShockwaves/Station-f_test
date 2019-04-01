@@ -88,7 +88,7 @@
 		<div v-if="confirmRoom" v-bind:style="submitted">
 			<h4 style="text-align: center; font-size: 4vw">{{ selectedRoom.name }}</h4>
 			<div class="description">
-				<h5 class="align-description">Capacity:&nbsp</h5><p>{{ selectedRoom.capacity }}</p>
+				<h5 class="align-description">Capacité:&nbsp</h5><p>{{ selectedRoom.capacity }}</p>
 				<h5 class="align-description">Équipements:</h5><p v-for="stuff in selectedRoom.equipements" style="float: left">&nbsp{{ stuff.name }}</p>
 				<div style="clear: both"><h5 style="float: left; font-size: 2.5vw">Description:&nbsp</h5><p style="font-size: 2vw">{{ selectedRoom.description }}</p></div>
 				<h5 class="align-description">Date:&nbsp</h5><p>{{ selectedRoom.date }}</p>
