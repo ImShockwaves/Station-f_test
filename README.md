@@ -27,6 +27,7 @@ A litte website that allow you to book a meeting room for a day.
 
 <h3>Access to the hosted version</h3>
 * browse "http://35.180.192.224:8333/"
+
 > website hosted on aws
 
 ## author
