@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     font-family: "FabrikatBold", sans-serif;
+    background-color: #f9f9f9
 }
 
 .head-div {
@@ -10,7 +11,6 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
-
 .logo {
     width: 62%;
     height: 55%;
@@ -20,6 +20,7 @@ body {
     width: auto;
     display: block;
     height: 60px;
+    background-color: white;
 }
 
 .img_body {
@@ -46,8 +47,20 @@ body {
     font-size: 7vw;
 }
 
+@media screen and (min-width: 1200px) {
+    .vert_mid > h1 {
+       font-size: 75px;
+    }
+}
+
 .vert_mid > p {
     font-size: 3.2vw;
+}
+
+@media screen and (min-width: 1200px) {
+    .vert_mid > p {
+       font-size: 30px;
+    }
 }
 
 hr { 
@@ -80,14 +93,17 @@ section {
 
 .room {
     width: 100%;
+    max-width: 1200px;
+    max-height: 100px;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
     border-color: black;
     margin-top: 1%;
-    padding: 2%;
+    padding: 1vw;
     background-color: white;
     display: inline-block;
+    text-align: left;
 }
 
 .users {
@@ -104,13 +120,16 @@ section {
 
 .users > img {
     width: 3vw;
-    height: auto;
+    max-width: 50px;
+    max-height: 50px;
     margin-bottom: 0%
-}
+} 
 
 .rt {
     width: 4vw;
     height: 4vw;
+    max-width: 50px;
+    max-height: 50px;
     padding-right: 15%;
 }
 
@@ -157,12 +176,35 @@ section {
     float: left;
 }
 
+.select_name {
+    text-align: center;
+    font-size: 4vw;
+}
+
+@media screen and (min-width: 1200px) {
+    .select_name {
+       font-size: 50px;
+    }
+}
+
 .description > h5 {
-  font-size: 2.5vw;  
+  font-size: 2.5vw; 
+}
+
+@media screen and (min-width: 1200px) {
+    .description > h5 {
+       font-size: 40px;
+    }
 }
 
 .description > p {
     font-size: 2vw;  
+}
+
+@media screen and (min-width: 1200px) {
+    .description > p {
+       font-size: 30px;
+    }
 }
 
 .confirmation {
@@ -172,6 +214,33 @@ section {
 .confirmation > button {
     font-size: 2vw;
     border-radius: 8px;     
+}
+
+@media screen and (min-width: 1200px) {
+    .confirmation > button {
+       font-size: 30px;
+    }
+}
+
+.desc {
+    float: left; 
+    font-size: 2.5vw
+}
+
+@media screen and (min-width: 1200px) {
+    .desc {
+       font-size: 40px;
+    }
+}
+
+.desc-content {
+    font-size: 2vw
+}
+
+@media screen and (min-width: 1200px) {
+    .desc-content {
+       font-size: 30px;
+    }
 }
 
 #yes {
@@ -204,4 +273,10 @@ section {
     border-width: 4px;
     border-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
+}
+
+.align {
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
