@@ -35,6 +35,7 @@ app.post('/endpoint', function(req, res){
 					else
 						collections = collection;
 				});
+				console.log(collections);
 				if (!collections.find("reservation"))
 					db.createCollection("reservation");
 				else
