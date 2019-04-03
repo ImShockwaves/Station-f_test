@@ -149,7 +149,7 @@ const logo = new Vue({
 				type: 'POST',
 				data: JSON.stringify(data),
 				contentType: 'application/json',
-				url: 'http://35.180.192.224:8333/endpoint',						
+				url: 'http://35.180.109.215:8333/endpoint',						
 				success: function(data) {
 					console.log('data successfully send');
 				}
