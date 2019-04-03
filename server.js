@@ -28,7 +28,14 @@ app.post('/endpoint', function(req, res){
 			MongoClient.connect("mongodb://localhost/Station_F", function(error, db) {
 				if (error)
 					return funcCallback(error);
-				if (!db.getCollectionNames().find("reservation"))
+				var collections;
+				db.listCollections().toArray(function(err, collection) {
+					if (err)
+						throw error;
+					else
+						collections = collection;
+				});
+				if (!collections.find("reservation"))
 					db.createCollection("reservation");
 				else
 				{
