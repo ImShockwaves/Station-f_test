@@ -25,7 +25,7 @@ app.post('/endpoint', function(req, res){
 			obj.reservation.push(newobj);
 			json = JSON.stringify(obj);
 			fs.writeFile('public/api/reservation.json', json, 'utf8', (err) => { console.log(err); });
-			MongoClient.connect("mongodb://localhost/Station_F", function(error, db) {
+			MongoClient.connect("mongodb://35.180.109.215/Station_F", function(error, db) {
 				if (error)
 					return funcCallback(error);
 				var collections;
