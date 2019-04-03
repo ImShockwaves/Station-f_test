@@ -25,7 +25,7 @@ app.post('/endpoint', function(req, res){
 			obj.reservation.push(newobj);
 			json = JSON.stringify(obj);
 			fs.writeFile('public/api/reservation.json', json, 'utf8', (err) => { console.log(err); });
-			MongoClient.connect("mongodb://ec2-35-180-109-215.eu-west-3.compute.amazonaws.com:27017/Station_F", function(error, db) {
+			MongoClient.connect("mongodb://aws-client:ec2-35-180-109-215.eu-west-3.compute.amazonaws.com:27017/Station_F", function(error, db) {
 				if (error)
 					console.log(error);
 				var collections;
