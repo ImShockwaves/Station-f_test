@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var MongoClient = require("mongodb").MongoClient;
 var fs = require('fs');
  
 var app = express();
@@ -29,3 +30,13 @@ app.post('/endpoint', function(req, res){
 });
 
 app.listen(8333);
+
+
+
+db.createUser(
+  {
+    user: "servUser",
+    pwd: "tyJKUUY5",
+    roles: [ { role: "readWrite", db: "Station_F" }]
+  }
+)
