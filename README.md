@@ -25,7 +25,7 @@ A litte website that allow you to book a meeting room for a day.
 * browse "localhost:8333" on any browser
 * website ready to use !
 
-<h3>Access to the hosted version</h3>
+<h3>Access to the hosted version (⛔️not working anymore !⛔️)</h3>
 
 * browse "http://35.180.109.215:8333/"
 
