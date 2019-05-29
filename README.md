@@ -13,7 +13,7 @@ A litte website that allow you to book a meeting room for a day.
 
 * For Macintosh distribution:
     * install brew
-    * brew install node.js
+    * `brew install node.js`
 * For Unix distribution:
     * apt install node.js or yum install nodejs (depending on the distribution you use)
 
