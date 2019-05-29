@@ -21,7 +21,7 @@ A litte website that allow you to book a meeting room for a day.
 
 <h3>Run the website</h3>
 
-* node <repository path>/server.js
+* `node <repository path>/server.js`
 * browse "localhost:8333" on any browser
 * website ready to use !
 
